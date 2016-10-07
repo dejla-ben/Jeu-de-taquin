@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="taquin.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+     
+        <div class="params">
+            
+            
+            <fieldset>
+                <legend>Description</legend>
+				<table>
+					<tr>
+					    <td><label>URL de l'image</label>
+					        <input type ="text" id="fileUrl" value="http://searchengineland.com/figz/wp-content/seloads/2015/10/google-panda-name3-ss-1920-800x450.jpg"/> </td>
+					    <td>
+					        <input type="button" id="charger" value="Charger l'image"/>
+					    </td>
+						<td><label>Affichage des numéros</label><input id="nums" type="checkbox"/>
+						    <input type="button" id="afficher" value="Afficher"/></td>
+					    
+					</tr>
+				
+				
+					<tr>
+					    
+						<td>
+							<label>Nombre de lignes</label>
+							<input type ="text" id="row" class="RowCol" value="3" size="15" />
+						</td>
+					   
+					    <td>
+					        <label>Nombre de colonnes</label>
+					        <input  type ="text" id="col" class="RowCol" value="3" size="15" />
+					    </td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <input type="button" id="begin" value="Generer le jeu"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="brasser" disabled="true">Brasser les tuiles</button>
+						</td>
+					</tr>
+				    <tr>
+				        <td><label><b>Déplacements :</b></label>
+				            <label id="myinput"><b>0</b></label></td>
+				    </tr>
+				</table>
+            </fieldset>
+        </div>
+   
+            
+            
+            <div id="taquin">
+                
+            </div>
+       
+        <script type="text/javascript">
+            
+            alert("Svp charger l'image avant de commencer à jouer, puis generer le jeu et finalement brassser les tuiles ");
+     
+       var x= $("#fileUrl").val()
+                  
+        $("#begin").click(function(){ 
+                 $("#taquin").gameTaquin($("#fileUrl").val(),
+                  { 
+                      rows :$("#row").val(),
+                      cols :$("#col").val(),
+                  }
+                               
+              );
+
+            $('button[id="brasser"]').prop('disabled', false);
+              //$("#myinput").val()='1';  
+
+          
+        });
+        
+         $("#charger").click(function(){ 
+                 $("#taquin").gameTaquin($("#fileUrl").val(),
+                  {
+                      rows :$("#row").val(),
+                      cols :$("#col").val(),
+                  }
+                               
+              );
+
+           
+        });
+        
+         $("#taquin").gameTaquin(x,
+                       {
+                           rows :$("#row").val(),
+                           cols :$("#col").val(), 
+                       }
+                   );
+        
+        
+    
+            
+</script>
+             
+    </body>
+</html>
